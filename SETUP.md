@@ -7,22 +7,22 @@
    cp -r memory-system ~/my-memory/
    ```
 
-2. **Edit `START_HERE.md`** — fill in who you are and what you're tracking.
+2. **Edit `surface/state.md`** — fill in who you are, what's happening, what you're tracking.
 
-3. **Edit `people/self.md`** — write your initial self-profile.
+3. **Edit `detail/people/self.md`** — write your initial self-profile.
 
 4. **Tell Claude about it.** Pick one:
 
 ### Option A: Project-level auto-load (best for Claude Code)
-Just work from this directory. Claude Code reads `CLAUDE.md` automatically.
+Just work from this directory. Claude Code reads `CLAUDE.md` automatically, which instructs it to read the surface layer first.
 
 ### Option B: Add a memory pointer
 Ask Claude to save a memory:
-> "Remember: I have a memory system at ~/my-memory/. When I start a personal conversation, read START_HERE.md and the latest session file first."
+> "Remember: I have a memory system at ~/my-memory/. On first load, read everything in surface/ then descend as needed."
 
 ### Option C: Manual each time
 Start conversations with:
-> "Read ~/my-memory/START_HERE.md and pick up where we left off."
+> "Read ~/my-memory/surface/state.md and surface/session-log.md, then let's pick up where we left off."
 
 ## Initializing Git (optional but recommended)
 
@@ -39,24 +39,39 @@ Keep it local. Don't push to GitHub unless you've thought carefully about privac
 ## Memory Migration
 
 If you already have Claude memories scattered around (`~/.claude/projects/*/memory/`), ask Claude:
-> "Check my Claude memory files and migrate anything useful into my memory system at ~/my-memory/."
+> "Check my Claude memory files and migrate anything useful into my memory system at ~/my-memory/. Place summaries in detail/, raw material in archive/."
 
-Claude will read the scattered memories, create proper files in your system, and suggest removing the originals so there's one source of truth.
+Claude will read the scattered memories, place them at the appropriate density tier, and suggest removing the originals.
 
-## Folder Purposes
+## Structure
 
-| Folder | What goes here | Example |
-|--------|---------------|---------|
-| `context/` | Summaries of source material you've reviewed | Email threads, documents, transcripts |
-| `people/` | Profiles of important people | Partners, mentors, colleagues, `self.md` |
-| `patterns/` | Recurring dynamics you've identified | Avoidance patterns, relationship cycles |
-| `sessions/` | Notes from each AI conversation | `001-2025-04-05-initial.md` |
-| `drafts/` | Documents being iterated on | Emails, letters, plans |
+```
+surface/              ← Always loaded. Lightweight. Current state + pointers.
+  state.md            ← Who you are, what's happening now
+  index.md            ← Map of everything in the system
+  session-log.md      ← One-line-per-session chronological list
+
+detail/               ← Loaded on demand. Profiles, analysis, active work.
+  people/
+    _index.md         ← One-line summary of each person
+    self.md           ← Your self-profile
+  patterns/
+    _index.md         ← One-line summary of each pattern
+  drafts/
+    _index.md         ← Active work-in-progress
+
+archive/              ← Loaded rarely. Dense source material, history.
+  sessions/
+    _index.md         ← Full session notes index
+  context/
+    _index.md         ← Source material summaries
+  raw/                ← Unprocessed transcripts, emails, documents
+```
 
 ## Tips
 
 - **Start messy.** You don't need every folder populated. Let it grow organically.
-- **Update `START_HERE.md` often.** It's the entry point — if it's stale, every new conversation starts confused.
+- **Update `surface/state.md` often.** It's the entry point — if it's stale, every new conversation starts confused.
 - **One session per conversation.** Even short ones. The numbering creates a timeline.
-- **Let Claude update files.** Don't feel like you need to manually maintain this — that's what the CLAUDE.md instructions are for. Just tell Claude when something's changed and it'll update the right files.
-- **Review periodically.** Every few weeks, ask Claude: "Review my memory system — what's stale, what's missing, what should be updated?"
+- **Let Claude manage the tiers.** The CLAUDE.md instructions tell it where to place new content by density. You just talk.
+- **Review periodically.** Every few weeks, ask Claude: "Review my memory system — what's stale, what should be promoted or archived?"
