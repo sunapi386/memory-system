@@ -4,33 +4,55 @@ last_updated: YYYY-MM-DD
 
 # System Index
 
-Full map of everything in the memory system. One line per file. Update when files are created or removed.
+Signal-annotated map of everything in the memory system. Update signal annotations at the end of each session.
+
+Signal levels: `pinned` (never degrades) · `high` (frequent, active) · `medium` (occasional) · `low` (rare) · `fading` (cascade candidate)
 
 ## Surface (always loaded)
 
-- `surface/state.md` — Current state, identity, active threads
-- `surface/index.md` — This file
-- `surface/session-log.md` — Chronological session list
+| File | Description | Signal |
+|------|-------------|--------|
+| `surface/state.md` | Current state, identity, active focus | pinned |
+| `surface/threads.md` | Active threads spanning sessions | pinned |
+| `surface/index.md` | This file | pinned |
+| `surface/session-log.md` | Chronological session list | pinned |
 
 ## Detail (loaded on demand)
 
 ### People
-- `detail/people/_index.md` — Summary of all people profiles
-- `detail/people/self.md` — Self-profile, patterns, open questions
+| File | Description | Accessed | Signal |
+|------|-------------|----------|--------|
+| `detail/people/_index.md` | Summary of all people profiles | — | pinned |
+| `detail/people/self.md` | Self-profile, patterns, open questions | 0 | — |
 
 ### Patterns
-- `detail/patterns/_index.md` — Summary of identified patterns
+| File | Description | Accessed | Signal |
+|------|-------------|----------|--------|
+| `detail/patterns/_index.md` | Summary of identified patterns | — | pinned |
+
+### Skills
+| File | Description | Accessed | Signal |
+|------|-------------|----------|--------|
+| `detail/skills/_index.md` | Distilled operational knowledge | — | pinned |
 
 ### Drafts
-- `detail/drafts/_index.md` — Active work-in-progress documents
+| File | Description | Accessed | Signal |
+|------|-------------|----------|--------|
+| `detail/drafts/_index.md` | Active work-in-progress | — | pinned |
 
 ## Archive (loaded rarely)
 
 ### Sessions
-- `archive/sessions/_index.md` — Full session notes index
+| File | Description | Accessed | Signal |
+|------|-------------|----------|--------|
+| `archive/sessions/_index.md` | Full session notes index | — | pinned |
 
 ### Context
-- `archive/context/_index.md` — Source material summaries
+| File | Description | Accessed | Signal |
+|------|-------------|----------|--------|
+| `archive/context/_index.md` | Source material summaries | — | pinned |
 
 ### Raw
-- `archive/raw/` — Unprocessed source material (transcripts, emails, documents)
+| File | Description | Accessed | Signal |
+|------|-------------|----------|--------|
+| `archive/raw/` | Unprocessed source material | — | — |

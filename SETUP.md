@@ -48,7 +48,8 @@ Claude will read the scattered memories, place them at the appropriate density t
 ```
 surface/              ← Always loaded. Lightweight. Current state + pointers.
   state.md            ← Who you are, what's happening now
-  index.md            ← Map of everything in the system
+  threads.md          ← Active threads spanning multiple sessions
+  index.md            ← Signal-annotated map of all files
   session-log.md      ← One-line-per-session chronological list
 
 detail/               ← Loaded on demand. Profiles, analysis, active work.
@@ -57,6 +58,8 @@ detail/               ← Loaded on demand. Profiles, analysis, active work.
     self.md           ← Your self-profile
   patterns/
     _index.md         ← One-line summary of each pattern
+  skills/
+    _index.md         ← Distilled operational knowledge
   drafts/
     _index.md         ← Active work-in-progress
 
@@ -75,3 +78,5 @@ archive/              ← Loaded rarely. Dense source material, history.
 - **One session per conversation.** Even short ones. The numbering creates a timeline.
 - **Let Claude manage the tiers.** The CLAUDE.md instructions tell it where to place new content by density. You just talk.
 - **Review periodically.** Every few weeks, ask Claude: "Review my memory system — what's stale, what should be promoted or archived?"
+- **Watch for skills.** When Claude suggests distilling a skill, that's the system compounding — validated approaches that carry forward across every future conversation.
+- **Don't worry about cleanup.** Stale content degrades through tiers automatically. Nothing gets deleted without your say — it just gets compressed and moved deeper.
